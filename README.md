@@ -1,5 +1,7 @@
 # Symfony AutoInject
 
+[![Build Status](https://travis-ci.org/heyday/symfony-autoinject.svg?branch=master)](https://travis-ci.org/heyday/symfony-autoinject)
+
 Symfony AutoInject provides opt-in service auto-injection for Symfony Dependency Injection.
 
 ## Installation (with composer)
