@@ -16,9 +16,11 @@ The tags are used as follows:
 
 ### "autoinject"
 
+Example: `{ name: autoinject }`
+
 Example: `{ name: autoinject, arguments: true, setter: true, adder: true }`
 
-Example: `{ name: autoinject, all: true }`
+When "all" is set to true or when no extra arguments are provided, the below settings all apply
 
 When "arguments" is set to true the compiler pass will attempt to find services for the arguments, and provides if
 they are found and error if not. Parameters that can't be auto-injected need to be provided manually.
@@ -32,13 +34,14 @@ When "adder" is set to true the compiler pass will attempt to find services that
 argument of adder methods found of the class, and it will add a method call to the adder
 for each service found
 
-When "all" is set to true, the above settings all apply
 
 ### "autoinject.provides"
 
+Example: `{ name: autoinject.provides }`
+
 Example: `{ name: autoinject.provides, interfaces: true, classes: true }`
 
-Example: `{ name: autoinject.provides, all: true }`
+When "all" is set to true or when no extra arguments are provided, the below settings all apply
 
 Both "interfaces" and "class" are optional
 
@@ -49,8 +52,6 @@ the provided service will be supplied
 When "classes" is set to true, the compiler pass will register the service as providing an instance of
 that class and parent classes, so when a class of the same type is encountered in a arguments, setter or add; the provided
 service will be supplied
-
-When "all" is set to true, the above settings all apply
 
 ## Putting it all together
 

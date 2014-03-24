@@ -16,30 +16,34 @@ use ReflectionMethod;
  * and configure their definitions to have "provided" services auto-injected
  * 
  * The relevant tags are:
- * 
+ *
  * "autoinject"
  * 
- * Example: { name: autoinject, arguments: true, setter: true, adder: true }
- * Example: { name: autoinject, all: true }
+ * Example: `{ name: autoinject }`
+ * 
+ * Example: `{ name: autoinject, arguments: true, setter: true, adder: true }`
+ * 
+ * When "all" is set to true or when no extra arguments are provided, the below settings all apply
+ * 
+ * When "arguments" is set to true the compiler pass will attempt to find services for the arguments, and provides if
+ * they are found and error if not. Parameters that can't be auto-injected need to be provided manually.
  * 
  * Both "setter", "arguments" and "adder" are optional
  * 
  * When "setter" is set to true, the compiler pass will attempt to find provided services that match
  * the argument of setters found on the class
- *
- * When "arguments" is set to true the compiler pass will attempt to find services for the arguments, and provides if
- * they are found and error if not. Parameters that can't be auto-injected need to be provided manually.
- *
+ * 
  * When "adder" is set to true the compiler pass will attempt to find services that match the
  * argument of adder methods found of the class, and it will add a method call to the adder
  * for each service found
  * 
- * When "all" is set to true, the above settings all apply
- * 
  * "autoinject.provides"
  * 
- * Example: { name: autoinject.provides, interfaces: true, classes: true }
- * Example: { name: autoinject.provides, all: true }
+ * Example: `{ name: autoinject.provides }`
+ * 
+ * Example: `{ name: autoinject.provides, interfaces: true, classes: true }`
+ * 
+ * When "all" is set to true or when no extra arguments are provided, the below settings all apply
  * 
  * Both "interfaces" and "class" are optional
  * 
@@ -50,8 +54,6 @@ use ReflectionMethod;
  * When "classes" is set to true, the compiler pass will register the service as providing an instance of
  * that class and parent classes, so when a class of the same type is encountered in a arguments, setter or add; the provided
  * service will be supplied
- * 
- * When "all" is set to true, the above settings all apply
  * 
  * @author Cam Spiers
  * @package Heyday\AutoInject
@@ -134,6 +136,10 @@ final class AutoInject implements CompilerPassInterface
             $reference = new Reference($id);
             
             foreach ($attrs as $attr) {
+                if (count($attr) === 0) {
+                    $attr[self::CONFIG_ALL] = true;
+                }
+                
                 if ($this->hasConfig(self::CONFIG_INTERFACES, $attr)) {
                     foreach ($reflectionClass->getInterfaceNames() as $interface) {
                         $this->addInterfaceProvider($interface, $reference);
@@ -160,6 +166,10 @@ final class AutoInject implements CompilerPassInterface
             $constructorProvided = [];
             
             foreach ($attrs as $attr) {
+                if (count($attr) === 0) {
+                    $attr[self::CONFIG_ALL] = true;
+                }
+
                 if ($this->hasConfig(self::CONFIG_ARGUMENTS, $attr)) {
                     // arguments injection
                     $arguments = $definition->getArguments();
