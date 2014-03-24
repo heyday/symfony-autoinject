@@ -1,5 +1,6 @@
 {
     "name": "heyday/symfony-autoinject",
+    "license": "MIT",
     "description": "Allows auto-injection in Symfony DI",
     "authors": [{
         "name": "Cam Spiers",
