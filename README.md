@@ -80,12 +80,12 @@ services:
 	my_service:
 		class: Service
 		tags:
-			- { name: "autoinject.provides": "all": true }
+			- { name: "autoinject.provides", "all": true }
 			
 	my_service2:
 		class: Service2
 		tags:
-			- { name: "autoinject": "all": true }
+			- { name: "autoinject", "all": true }
 	
 ```
 
