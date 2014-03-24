@@ -15,6 +15,7 @@ The tags are used as follows:
 ### "autoinject"
 
 Example: `{ name: autoinject, arguments: true, setter: true, adder: true }`
+
 Example: `{ name: autoinject, all: true }`
 
 When "arguments" is set to true the compiler pass will attempt to find services for the arguments
@@ -34,6 +35,7 @@ When "all" is set to true, the above settings all apply
 ### "autoinject.provides"
 
 Example: `{ name: autoinject.provides, interfaces: true, classes: true }`
+
 Example: `{ name: autoinject.provides, all: true }`
 
 Both "interfaces" and "class" are optional
@@ -67,7 +69,7 @@ class Service2
 		$this->service = $s;
 	}
 }
-``
+```
 
 The configuration
 
