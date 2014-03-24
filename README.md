@@ -81,12 +81,12 @@ services:
 	my_service:
 		class: Service
 		tags:
-			- { name: "autoinject.provides", "all": true }
+			- { name: "autoinject.provides" }
 			
 	my_service2:
 		class: Service2
 		tags:
-			- { name: "autoinject", "all": true }
+			- { name: "autoinject" }
 ```
 
 In this example, `my_service` provides itself as a service instance of the class `Service` and `my_service2`
