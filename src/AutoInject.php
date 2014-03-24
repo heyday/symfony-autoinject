@@ -26,9 +26,9 @@ use ReflectionMethod;
  * 
  * When "setter" is set to true, the compiler pass will attempt to find provided services that match
  * the argument of setters found on the class
- * 
- * When "arguments" is set to true the compiler pass will attempt to find services for the arguments
- * currently support for injection parameters is not supported, only services
+ *
+ * When "arguments" is set to true the compiler pass will attempt to find services for the arguments, and provides if
+ * they are found and error if not. Parameters that can't be auto-injected need to be provided manually.
  *
  * When "adder" is set to true the compiler pass will attempt to find services that match the
  * argument of adder methods found of the class, and it will add a method call to the adder

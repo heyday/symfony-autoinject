@@ -20,8 +20,8 @@ Example: `{ name: autoinject, arguments: true, setter: true, adder: true }`
 
 Example: `{ name: autoinject, all: true }`
 
-When "arguments" is set to true the compiler pass will attempt to find services for the arguments
-currently support for injection parameters is not supported, only services
+When "arguments" is set to true the compiler pass will attempt to find services for the arguments, and provides if
+they are found and error if not. Parameters that can't be auto-injected need to be provided manually.
 
 Both "setter", "arguments" and "adder" are optional
 
@@ -86,7 +86,6 @@ services:
 		class: Service2
 		tags:
 			- { name: "autoinject", "all": true }
-	
 ```
 
 In this example, `my_service` provides itself as a service instance of the class `Service` and `my_service2`
