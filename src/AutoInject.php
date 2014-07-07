@@ -178,7 +178,7 @@ final class AutoInject implements CompilerPassInterface
                     if ($constructor instanceof ReflectionMethod) {
                         foreach ($reflectionClass->getConstructor()->getParameters() as $index => $reflectionParameter) {
                             // We already have this argument provided, so skip
-                            if (array_key_exists($index, $arguments)) {
+                            if ($arguments && array_key_exists($index, $arguments)) {
                                 continue;
                             }
     
